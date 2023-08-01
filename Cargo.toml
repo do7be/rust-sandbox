@@ -13,4 +13,4 @@ path = "src/main.rs"
 
 [[bin]]
 name = "file_include"
-path = "src/file_include.rs"
+path = "src/file_include/main.rs"
