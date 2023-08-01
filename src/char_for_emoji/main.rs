@@ -1,4 +1,5 @@
 fn main() {
+    // terminalだと家族絵文字が最初から分解されてしまう
     let original = "🦀👨‍👩‍👧‍👦🍅";
     let chars = original.chars().collect::<Vec<char>>();
     println!("original: {}", original);
@@ -6,11 +7,12 @@ fn main() {
     println!("first: {}", chars[0]);
     println!("list: {:?}", chars);
 
-    let filtered: String = chars
+    let disassembled: String = chars
         .clone()
         .iter()
-        .filter(|&&char| char != '\u{200d}')
+        .filter(|&&char| char != '\u{200d}') // char生成はシングルクォート
         .collect();
 
-    println!("disassembled: {}", filtered);
+    // 1人1人バラバラになった家族
+    println!("disassembled: {}", disassembled);
 }
