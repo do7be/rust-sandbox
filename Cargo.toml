@@ -27,3 +27,7 @@ path = "src/colors_on_terminal/main.rs"
 [[bin]]
 name = "new_type_pattern"
 path = "src/new_type_pattern/main.rs"
+
+[[bin]]
+name = "trait"
+path = "src/trait/main.rs"
