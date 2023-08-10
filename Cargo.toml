@@ -23,3 +23,7 @@ path = "src/char_for_emoji/main.rs"
 [[bin]]
 name = "colors_on_terminal"
 path = "src/colors_on_terminal/main.rs"
+
+[[bin]]
+name = "new_type_pattern"
+path = "src/new_type_pattern/main.rs"
