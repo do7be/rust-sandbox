@@ -6,6 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+colored = "2"
 
 [[bin]]
 name = "main"
@@ -18,3 +19,7 @@ path = "src/file_include/main.rs"
 [[bin]]
 name = "char_for_emoji"
 path = "src/char_for_emoji/main.rs"
+
+[[bin]]
+name = "colors_on_terminal"
+path = "src/colors_on_terminal/main.rs"
