@@ -31,3 +31,7 @@ path = "src/new_type_pattern/main.rs"
 [[bin]]
 name = "trait"
 path = "src/trait/main.rs"
+
+[[bin]]
+name = "restrict_type"
+path = "src/restrict_type/main.rs"
