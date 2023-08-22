@@ -35,3 +35,11 @@ path = "src/trait/main.rs"
 [[bin]]
 name = "restrict_type"
 path = "src/restrict_type/main.rs"
+
+[[bin]]
+name = "feature_flag"
+path = "src/feature_flag/main.rs"
+
+[features]
+default = []
+beta = []
