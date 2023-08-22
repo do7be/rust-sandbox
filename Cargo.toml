@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 colored = "2"
+rand = "0.8.3"
 
 [[bin]]
 name = "main"
@@ -39,6 +40,10 @@ path = "src/restrict_type/main.rs"
 [[bin]]
 name = "feature_flag"
 path = "src/feature_flag/main.rs"
+
+[[bin]]
+name = "std_io"
+path = "src/std_io/main.rs"
 
 [features]
 default = []
