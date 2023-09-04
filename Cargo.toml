@@ -45,6 +45,10 @@ path = "src/feature_flag/main.rs"
 name = "std_io"
 path = "src/std_io/main.rs"
 
+[[bin]]
+name = "str_concat"
+path = "src/str_concat/main.rs"
+
 [features]
 default = []
 beta = []
