@@ -54,6 +54,10 @@ path = "src/str_concat/main.rs"
 name = "image"
 path = "src/image/main.rs"
 
+[[bin]]
+name = "thread"
+path = "src/thread/main.rs"
+
 [features]
 default = []
 beta = []
