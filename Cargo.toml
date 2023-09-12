@@ -8,7 +8,9 @@ edition = "2021"
 [dependencies]
 colored = "2"
 image = "0.24.7"
+imageproc = "0.23.0"
 rand = "0.8.3"
+rusttype = "0.9.3"
 
 [[bin]]
 name = "main"
@@ -57,6 +59,10 @@ path = "src/image/main.rs"
 [[bin]]
 name = "thread"
 path = "src/thread/main.rs"
+
+[[bin]]
+name = "image_with_text"
+path = "src/image_with_text/main.rs"
 
 [features]
 default = []
