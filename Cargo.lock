@@ -1404,6 +1404,8 @@ dependencies = [
  "imageproc",
  "rand 0.8.5",
  "rusttype",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
