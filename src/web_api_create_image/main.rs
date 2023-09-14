@@ -1,28 +1,35 @@
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_files as fs;
+use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 use image::{DynamicImage, Rgba};
 use imageproc::drawing::draw_text_mut;
 use rusttype::{Font, Scale};
 use serde::{Deserialize, Serialize};
+use std::io::Cursor;
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Body {
     text: String,
 }
 
-#[get("/")]
-async fn hello_tomato() -> impl Responder {
+#[get("/hello")]
+async fn hello_tomato() -> HttpResponse {
     HttpResponse::Ok().body("Hello Tomato!")
 }
 
-#[post("/create")]
-async fn create(req_body: web::Json<Body>) -> impl Responder {
+#[get("/create")]
+async fn create(query: web::Query<Body>) -> impl Responder {
     let mut img = image::open("./src/web_api_create_image/background.png").unwrap();
 
-    add_text_to_image(&mut img, &req_body.text);
+    add_text_to_image(&mut img, &query.text);
 
-    img.save("./src/web_api_create_image/output.png").unwrap();
+    let mut buffer = Vec::new();
+    img.write_to(
+        &mut Cursor::new(&mut buffer),
+        image::ImageOutputFormat::Jpeg(80),
+    )
+    .expect("Failed to encode image");
 
-    HttpResponse::Ok().body("Created!")
+    HttpResponse::Ok().content_type("image/png").body(buffer)
 }
 
 fn add_text_to_image(image: &mut DynamicImage, text: &str) {
@@ -37,8 +44,13 @@ fn add_text_to_image(image: &mut DynamicImage, text: &str) {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().service(hello_tomato).service(create))
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+    HttpServer::new(|| {
+        App::new()
+            .service(fs::Files::new("/hoge", "./src/web_api_create_image/static"))
+            .service(hello_tomato)
+            .service(create)
+    })
+    .bind(("127.0.0.1", 8080))?
+    .run()
+    .await
 }
