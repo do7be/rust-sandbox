@@ -1,9 +1,16 @@
 <html>
   <body>
-    <button>aaaa</button>
+    <label for="input">画像に入れるテキスト</label>
+    <input type="text" id="input" name="input"/>
+    <button>画像生成</button>
     <script>
       document.querySelector('button').addEventListener('click', () => {
-        fetch("http://localhost:8080/create?text=aaa")
+        const text = document.querySelector('#input').value
+        const url = new URL('http://localhost:8080/create')
+        const query = new URLSearchParams()
+        query.append('text', text)
+        url.search = query.toString()
+        fetch(url.href)
           .then(response => response.blob())
           .then(blob => {
               const blobUrl = URL.createObjectURL(blob)
