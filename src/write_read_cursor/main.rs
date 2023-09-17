@@ -27,11 +27,21 @@ fn main() {
     // Cursor
     println!("\nCursor");
     let mut file = File::open("./src/write_read_cursor/fuga.txt").unwrap();
-    let mut buffer = Vec::new();
-    file.read_to_end(&mut buffer).unwrap();
-    let mut cursor = Cursor::new(buffer);
+    let mut data = Vec::new();
+    file.read_to_end(&mut data).unwrap();
+    let mut cursor = Cursor::new(data);
+    let mut buffer = [0; 10];
 
-    println!("pos: {:?}", cursor.position());
+    println!("pos: {:?}, buffer: {:?}", cursor.position(), buffer);
+    cursor.read_exact(&mut buffer).unwrap();
+    println!("pos: {:?}, buffer: {:?}", cursor.position(), buffer);
     cursor.seek(SeekFrom::Start(2)).unwrap();
-    println!("pos: {:?}", cursor.position());
+    println!("pos: {:?}, buffer: {:?}", cursor.position(), buffer);
+
+    cursor.set_position(0);
+    cursor.write_all(b"ZZZZZZ").unwrap();
+    println!(
+        "cursor: {:?}",
+        String::from_utf8_lossy(&cursor.into_inner())
+    );
 }
