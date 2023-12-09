@@ -80,6 +80,10 @@ path = "src/web_api_create_image/main.rs"
 name = "write_read_cursor"
 path = "src/write_read_cursor/main.rs"
 
+[[bin]]
+name = "generic"
+path = "src/generic/main.rs"
+
 [features]
 default = []
 beta = []
