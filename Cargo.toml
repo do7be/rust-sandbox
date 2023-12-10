@@ -84,6 +84,10 @@ path = "src/write_read_cursor/main.rs"
 name = "generic"
 path = "src/generic/main.rs"
 
+[[bin]]
+name = "destructuring"
+path = "src/destructuring/main.rs"
+
 [features]
 default = []
 beta = []
