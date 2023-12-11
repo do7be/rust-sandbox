@@ -88,6 +88,10 @@ path = "src/generic/main.rs"
 name = "destructuring"
 path = "src/destructuring/main.rs"
 
+[[bin]]
+name = "ref"
+path = "src/ref/main.rs"
+
 [features]
 default = []
 beta = []
